@@ -25,6 +25,7 @@ Route::post('loginEv', 'firstPage\MainController@checklogin');
 //     return view('bodyPage\dashboard');
 // })->middleware('user');
 Route::resource("dashboard", "bodyPage\dashboardController");
+Route::resource("profile", "bodyPage\profileController");
 
 Auth::routes();
 

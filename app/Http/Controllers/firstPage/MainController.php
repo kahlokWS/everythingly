@@ -18,7 +18,6 @@ class MainController extends Controller
             'username' => $request->get('username'),
             'password' => $request->get('password')
         );
-
         if (Auth::guard('user')->attempt($user_data)) {
             return redirect('dashboard');
         } else {

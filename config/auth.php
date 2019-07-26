@@ -1,5 +1,7 @@
 <?php
 
+$primaryKey = "username";
+
 return [
 
     /*
@@ -79,6 +81,7 @@ return [
         'profile' => [
             'driver' => 'database',
             'table' => 'profile',
+            'model' => App\User::class,
         ],
     ],
 

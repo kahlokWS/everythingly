@@ -10,13 +10,13 @@ class dashboardController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth:user');
     }
 
     protected $primaryKey = 'username';
 
     public function index() {
-        dd(Auth::user()->username);
-        return view("bodyPage\dashboard");
+        $user_info = Auth::guard('user')->user();
+        return view("bodyPage\dashboard", compact('user_info'));
     }
 }
