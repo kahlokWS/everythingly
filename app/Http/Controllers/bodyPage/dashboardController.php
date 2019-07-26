@@ -8,17 +8,15 @@ use Illuminate\Support\Facades\Auth;
 
 class dashboardController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth:user');
+    }
 
     protected $primaryKey = 'username';
 
     public function index() {
-        // exit();
-        dd(Auth::guard('user')->user());
-        return view("bodyPage\dashboard");
+        $user_info = Auth::guard('user')->user();
+        return view("bodyPage\dashboard", compact('user_info'));
     }
 }
