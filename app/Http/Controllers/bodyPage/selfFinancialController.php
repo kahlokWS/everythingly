@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\firstPage;
+namespace App\Http\Controllers\bodyPage;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
+use Auth;
 
-class RegisterController extends Controller
+class selfFinancialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,8 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        return view('firstPage.register');
+        $user_info = Auth::guard('user')->user();
+        return view("bodyPage\selfFinancial", compact('user_info'));
     }
 
     /**
@@ -36,23 +37,7 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
-        $date = date("Y-m-d", strtotime($request->get('year') . "-" . $request->get('month') . "-" . $request->get('day')));
-        $this->validate($request, [
-            "username" => "required|unique:profile|max:25",
-            "name" => "required",
-            "email" => "required|unique:profile|email",
-            "password" =>"required|confirmed",
-        ]);
-        $password = $request->get('password');
-        $hash = bcrypt($password);
-        DB::table('profile')
-            ->insert([
-                "username" => $request->get('username'),
-                "fullname" => $request->get('name'),
-                "email" => $request->get('email'),
-                "password" => $hash,
-            ]);
-        return redirect()->back()->with('success', "Account Created Successfully");
+        //
     }
 
     /**

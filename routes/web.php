@@ -11,9 +11,13 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('asd', function () {
+    return view('welcome', 
+        [
+            'title' => "An even cooler way to do the title"
+        ]
+    );
+});
 
 Route::resource('/', 'firstPage\welcomeController');
 Route::resource('registerNew', 'firstPage\RegisterController');
@@ -25,8 +29,25 @@ Route::post('loginEv', 'firstPage\MainController@checklogin');
 //     return view('bodyPage\dashboard');
 // })->middleware('user');
 Route::resource("dashboard", "bodyPage\dashboardController");
-Route::resource("profile", "bodyPage\profileController");
+Route::resource("user/financial", "bodyPage\selfFinancialController");
+Route::resource("user/profile", "bodyPage\profileController");
+Route::get("user/profileEdit", function () {
+    return view("bodyPage/editProfile");
+});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/page', function () {
+    return view('page',
+        [
+            'title' => "Page 2 - A little about the Author",
+            'author' => json_encode([
+                    "name" => "Fisayo Afolayan",
+                    "role" => "Software Enginner",
+                    "code" => "Always keeping it clean"
+            ])
+        ]
+    );
+});

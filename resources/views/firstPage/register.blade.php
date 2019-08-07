@@ -32,41 +32,6 @@
                 <th>Retype Password</th>
                 <td><input type="password" class="form-control" name="password_confirmation"></td>
             </tr>
-            <tr>
-                <th>Date of Birth</th>
-                <td>
-                    <div class="col-lg-4 p-10 clearfix">
-                        <select name="day" class="form-control">
-                            @for ($i = 1; $i <= 31; $i++)
-                                <option value="{{$i}}">{{$i}}</option>
-                            @endfor
-                        </select>
-                    </div>
-                    <div class="col-lg-4 p-10 clearfix">
-                        <select name="month" class="form-control">
-                            @for ($i = 1; $i <= 12; $i++)
-                                <option value="{{$i}}">{{date("M", strtotime("2019-$i-01"))}}</option>
-                            @endfor
-                        </select>
-                    </div>
-                    <div class="col-lg-4 p-10 clearfix">
-                        <select name="year" class="form-control">
-                            @for ($i = 1990; $i <= 2020; $i++)
-                                <option value="{{$i}}">{{$i}}</option>
-                            @endfor
-                        </select>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th>Gender</th>
-                <td>
-                    <select name="gender" class="form-control">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
-                </td>
-            </tr>
         </table>
         <div class="col-mg-12 text-right">
             <button type="submit" class="btn btn-success">Submit</button>

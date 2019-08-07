@@ -14,10 +14,10 @@ class CreateProfilesTable extends Migration
     public function up()
     {
         Schema::create('profile', function (Blueprint $table) {
-            $table->string('username', 25)->unique();
+            $table->increments('user_id')->unique();
+            $table->string('username', 25);
             $table->string('fullname');
             $table->string('email');
-            $table->date('dob');
             $table->string('password');
             $table->tinyInteger('active')->default(1);
             $table->timestamps();
